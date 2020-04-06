@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tele2.tv.ingester.api.grpc.v1";
+option java_outer_classname = "IngesterApiProto";
+
+package com.tele2.tv.ingester.api.grpc.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+import "google/type/timeofday.proto";
+import "google/protobuf/wrappers.proto";
+
+//
+service TestApiService {
+
+    rpc GetSomething (GetSomethingRequest) returns (Something) {}
+
+
+}
+
+
+
+message GetSomethingRequest {
+    // Perhaps a search term
+    string search = 1;
+}
+
+message Something {
+    // Required. A unique identifier for something.
+    int64 something_id = 1;
+    // A string
+    string a_string = 2;
+    // Trying an enum
+    Status status = 3;
+}
+
+
+
+enum Status {
+    UNSPECIFIED = 0;
+    EXIST = 1;
+    REMOVED = 2;
+}
